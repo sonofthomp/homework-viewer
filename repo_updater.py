@@ -39,5 +39,5 @@ if __name__ == '__main__':
             repo_links[period].append(url)
             print(url)
 
-    with open('repos.json', 'w') as f:
+    with open('json/repos.json', 'w') as f:
         json.dump(repo_links, f, indent=4)
