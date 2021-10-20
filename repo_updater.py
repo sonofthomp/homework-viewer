@@ -21,6 +21,7 @@ def first_after(str, start, search):
 if __name__ == '__main__':
     import json
     import requests
+    print('imported modules')
     repo_links = {}
 
     # Paste GitHub HTML into repos.html
