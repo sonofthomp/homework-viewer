@@ -37,6 +37,7 @@ if __name__ == '__main__':
             url = r.url
             if url[-1] != '/':
                 url += '/'
+            url += 'blob/main/'
             repo_links[period].append(url)
             print(url)
 
