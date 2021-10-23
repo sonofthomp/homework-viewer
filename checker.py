@@ -42,7 +42,7 @@ for period in repos:
                     found = True
                 else:
                     if visual:
-                        print(f'{chr(8230)} {check[i]} not found for {name}')
+                        print(f'{chr(8230)} {repo + check[i]} not found for {name}')
                     i += 1
             if not found:
                 completed[check[0]][name] = {'link': 'n/a', 'pd': period}
