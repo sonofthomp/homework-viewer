@@ -1,22 +1,23 @@
-import json
-import requests
+from json import loads, dump
+from requests import get
+from datetime import datetime
 from repo_updater import first_after
 
-visual = True
+visual = False
 with open('json/repos.json', 'r') as f:
     data = f.read()
 
-repos = json.loads(data)
+repos = loads(data)
 
 with open('json/checks.json', 'r') as f:
     data = f.read()
 
-checks = json.loads(data)
+checks = loads(data)
 
 with open('json/completed.json', 'r') as f:
     data = f.read()
 
-completed = json.loads(data)
+completed = loads(data)
 
 for check in checks:
     completed[check[0]] = {}
@@ -32,7 +33,7 @@ for period in repos:
             i = 0
             while (not found) and (i < len(check)):
                 url = repo + check[i]
-                r = requests.get(url)
+                r = get(url)
                 name = r.url.split('/')[3]
 
                 if 200 <= r.status_code < 300:
@@ -50,4 +51,8 @@ for period in repos:
                     print(f'{chr(10060)} could not find {check[0]} for {name}')
 
 with open('json/completed.json', 'w') as f:
-    json.dump(completed, f, indent=4)
+    dump(completed, f, indent=4)
+
+time = datetime.now()
+with open('json/updated.txt', 'w') as f:
+    f.write(time.strftime("%m/%d/%Y, %H:%M:%S"))
