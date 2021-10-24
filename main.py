@@ -39,7 +39,8 @@ html += '''
 			</tr>
 '''
 
-for assignment in data:
+assignments = [i for i in data][::-1]
+for assignment in assignments:
 	if assignment[:2].isnumeric():
 		assignment_title = 'HW' + assignment[:2]
 	else:
@@ -57,8 +58,9 @@ for assignment in data:
 		</tr>'''
 
 html += '''
-		</table>
 		<br>
+		</table>
+		<br><br>
 	</div>
 '''
 
