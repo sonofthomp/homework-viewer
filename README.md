@@ -1,4 +1,4 @@
-# repo-parser
+# homework-viewer
 A program and website that allows you to review the repos of classmates easily and efficiently.
 
 Accessible here:
