@@ -118,6 +118,7 @@ else:
 				</tr>
 			</table>
 			<br><br>
+			<p> <a href="main.py"> home </a> </p>
 		</div>
 		<br><br>
 	'''
