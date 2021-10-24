@@ -26,6 +26,7 @@ html += '''
 		<br>
 		<h1> APCS Homework Viewer </h1>
 		<p> <i> by Gabriel Thompson '23 </i> </p>
+		<p> <a href="about.html"> How to use / FAQ </a> </p>
 		<br>
 	</div>
 	<br><br>
