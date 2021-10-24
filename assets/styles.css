@@ -1,0 +1,16 @@
+body {
+	background-color: rgb(218, 215, 232);
+	/* #77cce4; */
+}
+
+th, td {
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#main_box {
+	width: 50%;
+	background-color: lightblue;
+	border: 2px dotted blue;
+}
