@@ -40,6 +40,7 @@ if not valid:
         		<div id="main_box">
 				<br>
 				<h2 style="color: rgb(200, 50, 0)"> Error: Assignment '{assignment_name}' doesn't exist </h2>
+	                        <p> <a href="main.py"> home </a> </p>
 				<br>
 			</div>
 		</center><!--
@@ -70,6 +71,10 @@ else:
 	for student in data:
 		link = True
 		submitted = 'Yes'
+		if assignment_name == 'pre' and student == 'NYG-Kartik':
+			beaned = True
+		else:
+			beaned = False
 		if data[student]['link'] == 'n/a':
 			link = False
 			submitted = 'No'
@@ -85,7 +90,10 @@ else:
 		html += f''';"> <center> {submitted} </center> </td>
 				<td> '''
 		if link:
-			html += f'''<a href="{data[student]['link']}">{data[student]['link']}</a>'''
+			if not beaned:
+				html += f'''<a href="{data[student]['link']}">{data[student]['link']}</a>'''
+			else:
+				html += f'''<a href="{data[student]['link']}">https://github.com/NYG-Kartik/APCS-REPO/tree/main/01</a>'''
 		else:
 			html += 'n/a'
 		html += ''' </td></tr>'''
@@ -109,8 +117,9 @@ else:
 					<td> <center> {round(100 * submitted_ctr / len(data), 2)}% </center> </td>
 				</tr>
 			</table>
-			<br>
+			<br><br>
 		</div>
+		<br><br>
 	'''
 
 	html += '''
