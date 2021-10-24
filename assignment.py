@@ -32,6 +32,8 @@ html = '''
 f = open('json/completed.json', 'r')
 assignment_name = fs2d()['id']
 data = json.load(f)
+blacklist = open('json/blacklist.txt', 'r').read().split('\n')
+only_submitted = True
 
 valid = assignment_name in data
 if not valid:
@@ -80,49 +82,50 @@ else:
 			submitted = 'No'
 			unsubmitted_ctr += 1
 		student_url = 'https://www.github.com/' + student + '/'
-		html += f'''<tr>
-				<td> <a href="{student_url}" style="color: black;"> {student} </a> </td>
-				<td style="color: '''
-		if link:
-			html += 'green'
-		else:
-			html += 'red'
-		html += f''';"> <center> {submitted} </center> </td>
-				<td> '''
-		if link:
-			if not beaned:
-				html += f'''<a href="{data[student]['link']}">{data[student]['link']}</a>'''
+		if not(not link and only_submitted) and (not student in blacklist):
+			html += f'''<tr>
+					<td> <a href="{student_url}" style="color: black;"> {student} </a> </td>
+					<td style="color: '''
+			if link:
+				html += 'green'
 			else:
-				html += f'''<a href="{data[student]['link']}">https://github.com/NYG-Kartik/APCS-REPO/tree/main/01</a>'''
-		else:
-			html += 'n/a'
-		html += ''' </td></tr>'''
+				html += 'red'
+			html += f''';"> <center> {submitted} </center> </td>
+					<td> '''
+			if link:
+				if not beaned:
+					html += f'''<a href="{data[student]['link']}">{data[student]['link']}</a>'''
+				else:
+					html += f'''<a href="{data[student]['link']}">https://github.com/NYG-Kartik/APCS-REPO/tree/main/01</a>'''
+			else:
+				html += 'n/a'
+			html += ''' </td></tr>'''
 
 	submitted_ctr = len(data) - unsubmitted_ctr
 	html += f'''
-			</table>
-			<br>
-                        <h3> Statistics </h3>
-			<table>
-				<tr>
-					<td style="border: none;"></td>
-					<th> Submitted </td>
-					<th> Not Submitted </td>
-					<th> Percent Submitted </td>
-				</tr>
-				<tr>
-					<th> {assignment_name} </th>
-					<td> <center> {submitted_ctr} </center> </td>
-					<td> <center> {unsubmitted_ctr} </center> </td>
-					<td> <center> {round(100 * submitted_ctr / len(data), 2)}% </center> </td>
-				</tr>
-			</table>
-			<br><br>
-			<p> <a href="main.py"> home </a> </p>
-		</div>
+		</table>
+		<br>
+                       <h3> Statistics </h3>
+		<table>
+			<tr>
+				<td style="border: none;"></td>
+				<th> Submitted </td>
+				<th> Not Submitted </td>
+				<th> Percent Submitted </td>
+			</tr>
+			<tr>
+				<th> {assignment_name} </th>
+				<td> <center> {submitted_ctr} </center> </td>
+				<td> <center> {unsubmitted_ctr} </center> </td>
+			<td> <center> {round(100 * submitted_ctr / len(data), 2)}% </center> </td>
+			</tr>
+		</table>
 		<br><br>
+		<p> <a href="main.py"> home </a> </p>
+	</div>
+	<br><br>
 	'''
-
+	
 	html += '''
 	</body>
 	</html>
