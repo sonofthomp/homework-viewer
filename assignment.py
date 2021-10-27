@@ -74,9 +74,9 @@ else:
 		link = True
 		submitted = 'Yes'
 		if assignment_name == 'pre' and student == 'NYG-Kartik':
-			beaned = True
+			coconut_malld = True
 		else:
-			beaned = False
+			coconut_malld = False
 		if data[student]['link'] == 'n/a':
 			link = False
 			submitted = 'No'
@@ -93,7 +93,7 @@ else:
 			html += f''';"> <center> {submitted} </center> </td>
 					<td> '''
 			if link:
-				if not beaned:
+				if not coconut_malld:
 					html += f'''<a href="{data[student]['link']}">{data[student]['link']}</a>'''
 				else:
 					html += f'''<a href="{data[student]['link']}">https://github.com/NYG-Kartik/APCS-REPO/tree/main/01</a>'''
